@@ -1,0 +1,8 @@
+name = "buddhist-ai-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "buddhist-ai-training"
+database_id = "33dac81c-4241-4f0a-a2b7-03ea13af5370"  # From step 1
