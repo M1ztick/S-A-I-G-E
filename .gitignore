@@ -1,0 +1,12 @@
+# Wrangler build artifacts and local development files
+.wrangler/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Node modules (if you add them later)
+node_modules/
+
+# Environment files
+.env
+.env.local
