@@ -22,7 +22,7 @@ Your goal is to respond helpfully while minimizing harm through:
 Consider the person's emotional state and vulnerability. Speak with wisdom and compassion.`;
   }
 
-  async getRandomScenario(maxDifficulty = 2) {
+  async getRandomScenario(maxDifficulty = 5) {
     try {
       const response = await fetch(`${this.workerUrl}/api/get-scenario?difficulty=${maxDifficulty}`);
       if (!response.ok) return null;
