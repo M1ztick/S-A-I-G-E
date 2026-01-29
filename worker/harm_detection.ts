@@ -1,5 +1,7 @@
 // harm_detection.ts
 
+import { assessBuddhistPrinciples, BuddhistAssessment } from './buddhist_principles';
+
 interface PersonState {
   vulnerability?: "low" | "high" | "extreme";
   mood?: "neutral" | "depressed" | "anxious" | "distressed" | "desperate" | "testing";
@@ -24,6 +26,7 @@ interface HarmAssessment {
   };
   details: string[];
   lesson: string;
+  buddhist_assessment?: BuddhistAssessment; // New: Buddhist principle scores
 }
 
 export function simulateConsequences(
@@ -45,11 +48,15 @@ export function simulateConsequences(
     manipulation,
   };
 
+  // Assess Buddhist principles (positive ethics dimensions)
+  const buddhist_assessment = assessBuddhistPrinciples(response, scenario);
+
   return {
     total_harm,
     breakdown,
     details: collectDetails(response, scenario, breakdown),
     lesson: generateLesson(response, scenario, breakdown),
+    buddhist_assessment, // Include Buddhist principle scores
   };
 }
 

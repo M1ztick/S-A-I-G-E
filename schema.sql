@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS experiences (
     actual_harm REAL NOT NULL,
     harm_breakdown JSON NOT NULL,  -- {deception: 0.1, harshness: 0.3, ...}
     learned_lesson TEXT,
+    buddhist_scores JSON,  -- {ahimsa: 7.5, sacca: 8.2, karuna: 6.8, panna: 7.1, upekkha: 6.5}
+    buddhist_alignment TEXT,  -- low, moderate, good, excellent
     model_version INTEGER DEFAULT 1,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (scenario_id) REFERENCES scenarios(id)

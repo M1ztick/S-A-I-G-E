@@ -106,12 +106,12 @@ export default {
         // Calculate harm
         const outcome = simulateConsequences(aiResponse, scenarioData);
         
-        // Store experience
+        // Store experience with Buddhist principle scores
         await env.DB
           .prepare(`
-            INSERT INTO experiences 
-            (scenario_id, ai_response, actual_harm, harm_breakdown, learned_lesson, timestamp)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO experiences
+            (scenario_id, ai_response, actual_harm, harm_breakdown, learned_lesson, buddhist_scores, buddhist_alignment, timestamp)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
           `)
           .bind(
             scenario_id,
@@ -119,10 +119,12 @@ export default {
             outcome.total_harm,
             JSON.stringify(outcome.breakdown),
             outcome.lesson,
+            outcome.buddhist_assessment ? JSON.stringify(outcome.buddhist_assessment.principle_scores) : null,
+            outcome.buddhist_assessment ? outcome.buddhist_assessment.alignment_level : null,
             new Date().toISOString()
           )
           .run();
-        
+
         return Response.json(outcome, { headers: corsHeaders });
       }
       
