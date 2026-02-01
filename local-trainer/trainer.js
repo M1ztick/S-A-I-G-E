@@ -3,10 +3,10 @@ import { Ollama } from 'ollama';
 
 
 class BuddhistTrainer {
-  constructor(workerUrl = 'http://localhost:8787') {
+  constructor(workerUrl = 'https://buddhist-ai-worker.mistykmedia.workers.dev') {
     this.ollama = new Ollama({ host: 'http://localhost:11434' });
     this.workerUrl = workerUrl;
-    this.modelName = 'qwen3-vl:2b-instruct';
+    this.modelName = 'tinyllama:1.1b';
     this.systemPrompt = this.buildSystemPrompt();
   }
 
